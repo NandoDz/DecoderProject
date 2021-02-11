@@ -42,7 +42,7 @@ const substitutionModule = (function () {
     // if the params dont meet expectations return false
     if (alphabet.length != 26) return false;
 
-    // this is a check for repeating letters
+    // this is a check for repeating letters/////////
     let letter = alphabet[0];
     let count = 0;
     for (let letters of alphabet) {
@@ -51,7 +51,7 @@ const substitutionModule = (function () {
       }
     }
     if (count >= 2) return false;
-    ////////////////////////////////////////
+    /////////////////////////////////////////////////
     //encode
 
     const code = input.toLowerCase();

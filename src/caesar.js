@@ -7,7 +7,7 @@ const caesarModule = (function () {
   // you can add any code you want within this function scope
 
   function caesar(input, shift, encode = true) {
-    if (shift == 0 || shift < -25 || shift > 25) {
+    if (shift == 0 || shift <= -25 || shift > 25) {
       return false;
     }
     const alpha = [
@@ -55,7 +55,7 @@ const caesarModule = (function () {
         }
         for (let j = 0; j < alpha.length; j++) {
           if (code[i] == alpha[j]) {
-            let change = j - shift;
+            let change = (j - shift) % 26;
             if (change < 0) {
               results.push(alpha[26 + change]);
             } else {
@@ -79,11 +79,16 @@ const caesarModule = (function () {
         for (let j = 0; j < alpha.length; j++) {
           if (code[i] == alpha[j]) {
             let change = (j + shift) % 26;
-            results.push(alpha[change]);
+            if (change < 0) {
+              results.push(alpha[26 + change]);
+            } else {
+              results.push(alpha[change]);
+            }
           }
         }
       }
     }
+
     let newString = "";
     for (let letters of results) {
       newString += letters;
